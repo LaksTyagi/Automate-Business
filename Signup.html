@@ -1,0 +1,169 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome</h2>
+        <p>Signup successful!</p>
+        <a href="/add-contact">Add a new contact or video</a>
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up</title>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ffd700, #32cd32);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: white;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+.logo img {
+    width: 100px;
+}
+h1 {
+    color: #333;
+}
+h2 {
+    color: #555;
+}
+p {
+    color: #666;
+}
+.input-group {
+    margin: 1em 0;
+}
+.input-group label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: #333;
+}
+.input-group input {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.75em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+button:hover {
+    background-color: #45a049;
+}
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+</style>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="logo.png" alt="Automate Business Logo">
+        </div>
+        <h1>Get Started</h1>
+        <p>Let's get started by filling out the form below.</p>
+        <form action="/signup" method="post">
+            <div class="input-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name" required>
+            </div>
+            <div class="input-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name" required>
+            </div>
+            <div class="input-group">
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" value="India" disabled>
+            </div>
+            <div class="input-group">
+                <label for="whatsapp">WhatsApp Number</label>
+                <input type="text" id="whatsapp" name="whatsapp" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <button type="submit">Create Account</button>
+        </form>
+        <p>Don't have an account? <a href="login.html">Login here</a></p>
+    </div>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch('/signup', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Redirect to login page after successful signup
+                    window.location.href = 'login.html';
+                } else {
+                    alert('Signup failed, please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Signup failed, please try again.');
+            });
+        });
+    </script>
+</body>
+</html>
+
